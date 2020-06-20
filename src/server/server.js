@@ -1,7 +1,6 @@
 const path = require('path')
-const express = require('express');
+const express = require('express')
 const bodyParser = require('body-parser')
-const requestPost = require('./requestHandler')
 const cors = require('cors');
 
 // Setup empty JS object to act as endpoint for all routes
