@@ -11,9 +11,52 @@
 				<a href="/" title="Inspirock Trip Planner" >
 					<img src="/img/Travel Planner.svg" alt="">
 				</a>
-				<span class="tagline">Inspiration to see the planet</span>
+				<span>Inspiration to see the planet</span>
+			</div>
+			<div class="plans-nav"> 
+
 			</div>
 		</header>
+		<main>
+			<div class="input-section">
+				<div class="main-text">
+					<h1>The new way to plan your next trip</h1>
+				</div>
+				<div class="input-form">
+					<form>
+						<ul>
+							<li>
+							  <label for="dist">Name:</label>
+							  <input type="text" id="dist" name="user_name">
+							</li>
+							<li>
+							  <label for="date">Start:</label>
+							  <input type="date" name="startDate" min="2020-06-01" max="2021-08-31" id="startDate">
+							</li>
+							<li>
+								<label for="date">End:</label>
+								<input type="date" name="endDate" min="2020-06-01" max="2021-08-31" id="startDate">
+							  </li>
+						</ul>
+					</form>
+				</div>
+			</div>
+			<div class="plans-section">
+				<div>
+					<h1>
+						My Plans
+					</h1>
+				</div>
+				<div class="plan-cards">
+
+				</div>
+			</div>
+		</main>
+		<footer>
+			<div>
+				Test footer
+			</div>
+		</footer>
 		<script>
 			if ('serviceWorker' in navigator) {
 			window.addEventListener('load', () => {
