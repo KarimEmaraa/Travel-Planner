@@ -1,6 +1,6 @@
 import ia from '../media/favorite-2_th.jpg';
 
-function createCard(dist, date, image) {
+const createCard = (dist, date, image) => {
     //create a virtual dom
     const virtualDOM = document.createDocumentFragment();
     //create a card div
