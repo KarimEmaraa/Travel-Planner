@@ -17,10 +17,18 @@ const updateMinDate = () => {
     
 }
 
+const getTripDuration = (date) => {
+    const d = new Date();
+    console.log(d.getDate());
+    console.log(date);
+    let duration = Number(date.slice(8)) - d.getDate();
+    duration /= (1000*60*60*24);
+    return Math.round(duration);
+}
 
 function importAll(r) {
     let images = {};
     r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
     return images;
 }
-export { fetchAPIData, updateMinDate, importAll };
+export { fetchAPIData, updateMinDate, importAll, getTripDuration };

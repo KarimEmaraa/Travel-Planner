@@ -1,5 +1,5 @@
-import { fetchAPIData } from './utils';
-import {createCard } from './cardCreator';
+import { fetchAPIData, getTripDuration } from './utils';
+import { createCard } from './cardCreator';
 //constats defintions
 const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 const geonamesAPI = 'http://api.geonames.org/searchJSON?q=';
@@ -45,7 +45,10 @@ export const submitHandler = async (event) => {
         alert('WEATHER FAILD');
         return;
     }
-
+    console.log(getTripDuration(distDate.value));
+    const {min_temp, max_temp} = weatherData.data[getTripDuration(distDate.value)];
+   
+    const weatherIcon = weatherData.data[getTripDuration(distDate.value)].weather.icon;
     
     // Get data from Pixabay
     const pixabayURL = `${pixabayAPI}?key=${pixabayKey}&q=${name}+${countryName}&image_type=photo`;
@@ -56,6 +59,7 @@ export const submitHandler = async (event) => {
         alert('PIXA FAILED');
         return;
     }
+    const photo = pixabayData.hits[0].webformatURL;
 
     // Get data from countries REST API
     const RestAPIURL = `${countriesRestAPI}/${countryName}`;
