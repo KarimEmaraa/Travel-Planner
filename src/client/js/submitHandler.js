@@ -4,7 +4,7 @@ const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 const geonamesAPI = 'http://api.geonames.org/searchJSON?q=';
 const weatherbitAPI = 'https://api.weatherbit.io/v2.0/forecast/daily?'; 
 const pixabayAPI = 'https://pixabay.com/api/'; 
-const restcountriesAPI = 'https://restcountries.eu/rest/v2/name';
+const countriesRestAPI = 'https://restcountries.eu/rest/v2/name';
 
 //get user inputs
 const distation = document.getElementById('dist');
@@ -13,7 +13,7 @@ const distDate = document.getElementById('startDate');
 export const submitHandler = async (event) => {
     event.preventDefault();
     //check for empty fields  
-    if(distation === '' || distDate === '')
+    if(distation.value === '' || distDate.value === '')
     {
         //TODO Handle ERROR
         alert('error empty field');
@@ -33,17 +33,36 @@ export const submitHandler = async (event) => {
         alert('GEO FAILD');
         return;
     }
-    let {lat, lng, name, countryName} = geoData.geonames[0];
+    const {lat, lng, name, countryName} = geoData.geonames[0];
 
     //get data from weatherbit
-    let weatherURL = `${weatherbitAPI}lat=${lat}&lon=${lng}&key=${weatherKey}`;
-    let weatherData =  await fetchAPIData(weatherURL);
+    const weatherURL = `${weatherbitAPI}lat=${lat}&lon=${lng}&key=${weatherKey}`;
+    const weatherData =  await fetchAPIData(weatherURL);
     if (!weatherData)
     {
         //TODO: HANDLE ERROR
         alert('WEATHER FAILD');
         return;
     }
-    console.log(distDate.value);
-    console.log(weatherData);
+    
+    // Get data from Pixabay
+    const pixabayURL = `${pixabayAPI}?key=${pixabayKey}&q=${name}+${countryName}&image_type=photo`;
+    const pixabayData =  await fetchAPIData(pixabayURL);
+    if (!pixabayData) 
+    {
+        //TODO: HANDLE ERROR
+        alert('PIXA FAILED');
+        return;
+    }
+
+    // Get data from countries REST API
+    const RestAPIURL = `${countriesRestAPI}/${countryName}`;
+    const restData =  await fetchAPIData(RestAPIURL);
+    if (!restData[0])
+    {
+        alert('FAILED REST');
+        return;
+    }     
+    const {capital, timezones, currencies, languages, flag} = restData[0];
+
 }
