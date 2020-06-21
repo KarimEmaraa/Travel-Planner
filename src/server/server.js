@@ -2,10 +2,16 @@ const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors');
+const dotenv = require('dotenv').config();
+
 
 // Setup empty JS object to act as endpoint for all routes
 const projectData = {};
-
+const apiCreds = { 
+    geoUser: process.env.GEO_ID,
+    weatherKey: process.env.WEATHER_BIT_KEY, 
+    pixabayKey: process.env.PIXABAY_KEY 
+};
 // Start up an instance of app
 const app = express();
 /* Middleware*/
@@ -27,5 +33,9 @@ const server = app.listen(port, ()=> {
 
 app.get('/', function(req, res){
     res.sendFile(path.resolve('dist/index.html')); 
+});
+
+app.get('/apiCred', (req, res) => {
+    res.send(apiCreds);
 });
 
