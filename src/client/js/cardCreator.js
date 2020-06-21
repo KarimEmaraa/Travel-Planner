@@ -29,7 +29,7 @@ const createCard = (cardData) => {
                                 <p>Language: ${cardData.language}</p>
                             </li>
                             <li>
-                                <p>${cardData.daysLeft} days for your Trip</p>
+                                <p>${cardData.daysLeft} days left for your Trip</p>
                             </li>
                         </ul>
                     </div>
