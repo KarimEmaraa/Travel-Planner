@@ -1,30 +1,52 @@
-import ia from '../media/favorite-2_th.jpg';
+import { importAll } from "./utils";
 
-const createCard = (dist, date, image) => {
-    //create a virtual dom
-    const virtualDOM = document.createDocumentFragment();
-    //create a card div
-    const carddiv = document.createElement('div');
-    carddiv.classList = 'card';
-    //create an img
-    const img = document.createElement('img');
-    img.src = ia;
-    //create card text.
-    const textdiv = document.createElement('div');
-    textdiv.classList = 'card-body';
-    //create a p element
-    const cardp = document.createElement('p');
-    cardp.innerHTML = "text";
-    textdiv.appendChild(cardp);
+const images = importAll(require.context('../media', false, /\.(png|jpe?g|svg)$/));
 
-    carddiv.appendChild(img);
-    carddiv.appendChild(textdiv);
-    //add those to virtual dom.
-    virtualDOM.appendChild(carddiv);
-    //append to to maindom*/
-    const maincards = document.getElementsByClassName('plan-cards');
-    maincards[0].appendChild(virtualDOM);
-
+const createCard = (cardData) => {
+    const newCard = document.createElement('div');
+    const img = images[`${cardData.weatherIcon}.png`];
+    newCard.classList = 'card';
+    const card = `
+                    <div class="card-img">
+                        <img src="${cardData.cityPhoto}" alt="Image of ${cardData.cityName}">
+                    </div>
+                    <div class="country-info">
+                        <ul class="info-list">
+                            <li>
+                                <span><p>Country: ${cardData.countryName}</p></span>
+                                <img src="${cardData.flag}" alt="${cardData.countryName} Flag">
+                            </li>
+                            <li>
+                                <p>Capital: ${cardData.capital}</p>
+                            </li>
+                            <li>
+                                <p>Time Zone: ${cardData.timezone}</p>
+                            </li>
+                            <li>
+                                <p>Currency: ${cardData.currency}</p>
+                            </li>
+                            <li>
+                                <p>Language: ${cardData.language}</p>
+                            </li>
+                            <li>
+                                <p>${cardData.daysLeft} days for your Trip</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="weather-info">
+                        <ul class="winfo-list">
+                            <li>
+                                <img src="img/${cardData.weatherIcon}.png" alt="Weather Icon">
+                            </li>
+                            <li>
+                                <p>Low Temprature: ${cardData.minTemp}</p>
+                            </li>
+                            <li>
+                                <p>High Temprature: ${cardData.maxTemp}</p>
+                            </li>
+                    </div>`
+    newCard.innerHTML = card;
+    document.getElementsByClassName('plan-cards')[0].appendChild(newCard);
 }
 
 export { createCard }

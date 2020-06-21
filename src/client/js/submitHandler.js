@@ -1,4 +1,5 @@
 import { fetchAPIData } from './utils';
+import {createCard } from './cardCreator';
 //constats defintions
 const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 const geonamesAPI = 'http://api.geonames.org/searchJSON?q=';
@@ -44,6 +45,7 @@ export const submitHandler = async (event) => {
         alert('WEATHER FAILD');
         return;
     }
+
     
     // Get data from Pixabay
     const pixabayURL = `${pixabayAPI}?key=${pixabayKey}&q=${name}+${countryName}&image_type=photo`;
@@ -65,4 +67,19 @@ export const submitHandler = async (event) => {
     }     
     const {capital, timezones, currencies, languages, flag} = restData[0];
 
+    const cardData = {
+        cityName: name,
+        countryName: countryName,
+        minTemp: min_temp,
+        maxTemp: max_temp,
+        weatherIcon: weatherIcon,
+        cityPhoto: photo,
+        capital: capital,
+        timezone: timezones[0],
+        currency: currencies[0].code,
+        language: languages[0].name,
+        flag: flag,
+        daysLeft: getTripDuration(distDate.value),
+    }
+    createCard(cardData);
 }

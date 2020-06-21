@@ -16,4 +16,11 @@ const updateMinDate = () => {
     e.setAttribute('max', d.toISOString().slice(0,10));
     
 }
-export { fetchAPIData, updateMinDate };
+
+
+function importAll(r) {
+    let images = {};
+    r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+    return images;
+}
+export { fetchAPIData, updateMinDate, importAll };
