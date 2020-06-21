@@ -18,11 +18,10 @@ const updateMinDate = () => {
 }
 
 const getTripDuration = (date) => {
-    const d = new Date();
-    console.log(d.getDate());
-    console.log(date);
-    let duration = Number(date.slice(8)) - d.getDate();
-    duration /= (1000*60*60*24);
+    const d1 = new Date();
+    const d2 = new Date(date);
+    let duration = d2.getTime() - d1.getTime();
+    duration /= (1000*3600*24);
     return Math.round(duration);
 }
 
