@@ -21,19 +21,20 @@
 				</div>
 				<div class="input-form">
 					<form>
-						<ul>
-							<li>
-							  	<label for="dist">Going to:</label>
-							  	<input type="text" id="dist" name="user_name" placeholder="Enter City">
-							</li>
-							<li>
-							  	<label for="date">Departing Date:</label>
-							  	<input type="date" name="startDate" id="startDate">
-							</li>
-							<li>
-								<input type="submit" name="submit" value="See My Plan" id="submitButton">
-							</li>
-						</ul>
+						<div>
+							<label for="dist">Going to:</label>
+							<input type="text" id="dist" name="user_name" placeholder="Enter City Ex: Paris">
+						</div>
+
+						<div>
+							<label for="date">Departing Date:</label>
+							<input type="date" name="startDate" id="startDate">
+						</div>
+						
+						<div class="button">
+							<input type="submit" name="submit" value="See My Plan" id="submitButton">	  
+						</div>
+					  	
 					</form>
 				</div>
 			</div>
@@ -49,8 +50,10 @@
 			</div>
 		</main>
 		<footer>
-			<div>
-				Test footer
+			<div class="foot">
+				<p>
+					Udacity Final Project
+				</p>
 			</div>
 		</footer>
 		<script>

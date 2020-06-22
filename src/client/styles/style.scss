@@ -10,8 +10,17 @@ body{
     text-shadow: 2px 2px 10px black;
 }
 
+
+main {
+    position: relative;
+}
+
 .header-logo {
     color: white;
+    img {
+        width: 30vw;
+        min-width: 400px;
+    }
     span {
         font-size: 25px;
         text-justify: center;
@@ -22,46 +31,60 @@ body{
 .input-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
     min-height: 50vh;
-    min-width: 90vw;
     
     .main-text {
         grid-column: 1;
         justify-self: center;
         align-self: center;
-        min-width: 30vw;
     }
 
     .input-form {
-        display: flex-box;
+        grid-column: 2;
         background-color: white;
         box-shadow: 0.4px 0.4px 5px black;
         color: black;
-        min-width: 40vw;
-        min-height: 40vh;
         border-radius: 10px;
         grid-column: 2;
         justify-self: center;
         align-self: center;
+        padding: 10px;
         input {
-            min-width: 50%;
             margin: 20px;
             height: 50px;
-            border-radius: 20px;
-            border: 2px solid cyan;
-            font-size: 25px;
-            padding-left: 10px;
+            border-radius: 15px;
+            border: 2px solid orange;
+            font-size: 1.2rem;
             color: gray;
+            padding-left: 10px;
+        }
+
+        .button {
+            text-align: center;
+            :hover {
+                background-color: orange;
+                color: white;
+            }
         }
 
         label {
-            font-size: 30px;
+            font-size: 1.5rem;
             color: gray;
             text-shadow: none;
         }
-        ul {
-            list-style-type: none;
-        }
     }
 }
+
+.plans-section {
+    display: none;
+}
+
+
+
+.foot {
+    position: absolute;
+    bottom: 0;
+  }
+
 
