@@ -3,6 +3,10 @@ import { importAll } from "./utils";
 const images = importAll(require.context('../media', false, /\.(png|jpe?g|svg)$/));
 
 const createCard = (cardData) => {
+    //show cards
+    const plans = document.getElementsByClassName('plans-section')[0];
+    plans.style.display = 'block';
+    //create a new card
     const newCard = document.createElement('div');
     const img = images[`${cardData.weatherIcon}.png`];
     newCard.classList = 'card';

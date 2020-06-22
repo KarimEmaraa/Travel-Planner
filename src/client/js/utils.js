@@ -25,9 +25,39 @@ const getTripDuration = (date) => {
     return Math.round(duration);
 }
 
-function importAll(r) {
+//function to import all images in media folder
+
+const importAll = (r)=> {
     let images = {};
     r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
     return images;
 }
-export { fetchAPIData, updateMinDate, importAll, getTripDuration };
+
+const showError =  (all, msg) => {
+
+    const name = document.getElementById('dist');
+    const date = document.getElementById('startDate');
+
+    name.style.border = '2px solid red';
+    name.value = '';
+    name.setAttribute('placeholder', msg);
+    name.style.color = 'red';
+    if(all)
+    {
+        date.style.border = '2px solid red';
+        date.style.color = 'red';
+    }
+}
+
+const hideError = () => {
+    const name = document.getElementById('dist');
+    const date = document.getElementById('startDate');
+
+    name.style.border = '2px solid orange';
+    name.setAttribute('placeholder', 'Enter City Ex: Paris');
+    name.style.color = 'gray';
+
+    date.style.border = '2px solid orange';
+    date.style.color = 'gray';
+}
+export { fetchAPIData, updateMinDate, importAll, getTripDuration, showError, hideError};

@@ -1,4 +1,4 @@
-import { fetchAPIData, getTripDuration } from './utils';
+import { fetchAPIData, getTripDuration, showError } from './utils';
 import { createCard } from './cardCreator';
 //constats defintions
 const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
@@ -17,7 +17,7 @@ export const submitHandler = async (event) => {
     if(distation.value === '' || distDate.value === '')
     {
         //TODO Handle ERROR
-        alert('error empty field');
+        showError(true, 'Enter your destination');
         return;
     }
     //get credentials
@@ -31,7 +31,7 @@ export const submitHandler = async (event) => {
     if (!geoData.geonames[0])
     {
         //TODO: HANDLE ERROR
-        alert('GEO FAILD');
+        showError(false, "Invalid destination");
         return;
     }
     const {lat, lng, name, countryName} = geoData.geonames[0];
@@ -42,10 +42,9 @@ export const submitHandler = async (event) => {
     if (!weatherData)
     {
         //TODO: HANDLE ERROR
-        alert('WEATHER FAILD');
+        showError(false, "Can't find weather for your destination");
         return;
     }
-    console.log(getTripDuration(distDate.value));
     const {min_temp, max_temp} = weatherData.data[getTripDuration(distDate.value)];
    
     const weatherIcon = weatherData.data[getTripDuration(distDate.value)].weather.icon;
@@ -56,7 +55,7 @@ export const submitHandler = async (event) => {
     if (!pixabayData) 
     {
         //TODO: HANDLE ERROR
-        alert('PIXA FAILED');
+        showError(false, "Can't find image for your destination");
         return;
     }
     const photo = pixabayData.hits[0].webformatURL;
@@ -66,7 +65,7 @@ export const submitHandler = async (event) => {
     const restData =  await fetchAPIData(RestAPIURL);
     if (!restData[0])
     {
-        alert('FAILED REST');
+        showError(false, "Can't find information about your destination");
         return;
     }     
     const {capital, timezones, currencies, languages, flag} = restData[0];
