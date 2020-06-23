@@ -17,6 +17,7 @@ const updateMinDate = () => {
     
 }
 
+//gets amount of days from today untill departing day (date)
 const getTripDuration = (date) => {
     const d1 = new Date();
     const d2 = new Date(date);
@@ -33,6 +34,7 @@ const importAll = (r)=> {
     return images;
 }
 
+//shows error on user invalid input
 const showError =  (all, msg) => {
 
     const name = document.getElementById('dist');
@@ -49,6 +51,7 @@ const showError =  (all, msg) => {
     }
 }
 
+//restores normal styling after error occurs
 const hideError = () => {
     const name = document.getElementById('dist');
     const date = document.getElementById('startDate');
