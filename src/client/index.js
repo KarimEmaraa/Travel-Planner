@@ -6,8 +6,12 @@ import './media/Travel Planner.svg';
 import './styles/style.scss';
 import './styles/cards.scss';
 
+import "babel-polyfill"
+//updates date picker to be from today up to 15 days (max days of weatherbit data)
 updateMinDate();
+
 document.getElementById('submitButton').addEventListener('click', submitHandler );
+//hide errors on focus
 document.getElementById('dist').addEventListener('focus', hideError);
 document.getElementById('startDate').addEventListener('focus', hideError);
 
