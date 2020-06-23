@@ -4,6 +4,7 @@ import { fetchAPIData, updateMinDate, importAll, getTripDuration, hideError, sho
 
 import './media/Travel Planner.svg';
 import './styles/style.scss';
+import './styles/cards.scss';
 
 updateMinDate();
 document.getElementById('submitButton').addEventListener('click', submitHandler );

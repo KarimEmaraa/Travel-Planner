@@ -1,0 +1,57 @@
+
+.plans-section {
+    display: none;
+    h1 {
+        text-align: center;
+    }
+}
+
+.plan-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.card {
+    min-width: 400px;
+    width: 30vw;
+    border: 2px solid orange;
+    border-radius: 10px;
+    background-color: white;
+    color: gray;
+    text-shadow: none;
+    margin-bottom: 40px;
+    ul {
+        padding-left: 0px;
+        list-style-type: none;
+    }
+    .flag {
+        width: 30px;
+        height: 17px;
+        border: 2px solid black;
+        border-radius: 2px;
+        margin-left: 10px;
+    }
+
+    .weather {
+        width: 75px;
+        height: 75px;
+    }
+    .country-info{
+        padding-left: 40px;
+        border-bottom: 2px solid gray;
+    }
+    .weather-info {
+        text-align: center;
+    }
+    .card-img{
+        img {
+            justify-self: center;;
+            width: 99%;
+            height: 350px;
+            border: 2px solid orange;
+            border-radius: 10px;
+        }    
+    }
+}

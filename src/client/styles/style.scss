@@ -8,11 +8,13 @@ body{
     font-family: 'Lato',sans-serif;
     color: white;
     text-shadow: 2px 2px 10px black;
+    display: flex;
+    flex-direction: column;
+    min-height: 97vh;
 }
 
-
 main {
-    position: relative;
+    flex: 2;
 }
 
 .header-logo {
@@ -76,15 +78,10 @@ main {
     }
 }
 
-.plans-section {
-    display: none;
+footer
+{
+    display: flex;
+    justify-content: center;
 }
-
-
-
-.foot {
-    position: absolute;
-    bottom: 0;
-  }
 
 

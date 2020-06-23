@@ -17,8 +17,8 @@ const createCard = (cardData) => {
                     <div class="country-info">
                         <ul class="info-list">
                             <li>
-                                <span><p>Country: ${cardData.countryName}</p></span>
-                                <img src="${cardData.flag}" alt="${cardData.countryName} Flag">
+                                <span>Country: ${cardData.countryName}</span>
+                                <img class="flag" src="${cardData.flag}" alt="${cardData.countryName} Flag">
                             </li>
                             <li>
                                 <p>Capital: ${cardData.capital}</p>
@@ -33,20 +33,20 @@ const createCard = (cardData) => {
                                 <p>Language: ${cardData.language}</p>
                             </li>
                             <li>
-                                <p>${cardData.daysLeft} days left for your Trip</p>
+                                <p>${cardData.daysLeft} days left for your trip</p>
                             </li>
                         </ul>
                     </div>
                     <div class="weather-info">
                         <ul class="winfo-list">
                             <li>
-                                <img src="img/${cardData.weatherIcon}.png" alt="Weather Icon">
+                                <img class="weather" src="img/${cardData.weatherIcon}.png" alt="Weather Icon">
                             </li>
                             <li>
-                                <p>Low Temprature: ${cardData.minTemp}</p>
+                                <p>Low Temprature: ${cardData.minTemp} °C</p>
                             </li>
                             <li>
-                                <p>High Temprature: ${cardData.maxTemp}</p>
+                                <p>High Temprature: ${cardData.maxTemp} °C</p>
                             </li>
                     </div>`
     newCard.innerHTML = card;
